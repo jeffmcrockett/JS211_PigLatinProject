@@ -1,10 +1,9 @@
 {
-  "name": "pig-latin",
+  "name": "piglatin",
   "version": "1.0.0",
-  "description": "Practicing String Manipulation with the illysay amegay, Pig Latin!",
+  "description": "Austin Coding Academy - JavaScript Workbook",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AustinCodingAcademy/JS211_PigLatinProject.git"
+    "type": "git"
   },
   "scripts": {
     "lint": "htmllint {*.html,./**/*.html} && stylelint ./**/*.css && eslint .",
@@ -15,9 +14,9 @@
   },
   "author": "Clayton Berger",
   "bugs": {
-    "url": "https://github.com/AustinCodingAcademy/JS211_PigLatinProject/issues"
+    "url": "https://github.com/AustinCodingAcademy/JS211_TicTacToeProject/issues"
   },
-  "homepage": "https://github.com/AustinCodingAcademy/JS211_PigLatinProject#readme",
+  "homepage": "https://github.com/AustinCodingAcademy/JS211_TicTacToeProject#readme",
   "dependencies": {
     "eslint": "^3.19.0",
     "functional-javascript-workshop": "^1.0.6",

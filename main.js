@@ -11,18 +11,80 @@ const rl = readline.createInterface({
 });
 
 
-const pigLatin = (word) => {
 
-  // Your code here
 
+let smallestNonNegative = function(num1, num2) {
+  if (num1 < 0) {
+    return num2;
+  }
+  if (num2 < 0) {
+    return num1;
+  }
+  if (num1 < num2) {
+    return num1;
+  } else {
+    return num2;
+  }
 }
+
+let indexOfFirstVowel = function(word) {
+  // first find the indexes of all vowels
+  // compare vowels one at time, carrying the smaller indexed vowel
+  let aIndex = word.indexOf("a");
+  let eIndex = word.indexOf("e");
+  let iIndex = word.indexOf("i");
+  let oIndex = word.indexOf("o");
+  let uIndex = word.indexOf("u");
+  let vowelArray = [aIndex, eIndex, iIndex, oIndex, uIndex];
+  let vowel = -1;
+  for (let x = 0; x < vowelArray.length; x++) {
+    vowel = smallestNonNegative(vowel, vowelArray[x])
+  }
+  return vowel;
+}
+
+const pigLatin = function(word) {
+  word = word.trim().toLowerCase();
+
+  if (indexOfFirstVowel(word) == 0) {
+    return word + "yay";
+  }
+  if (indexOfFirstVowel(word) == -1) {
+    return word + "ay";
+  }
+  if (indexOfFirstVowel(word) > 0) {
+    let position = indexOfFirstVowel(word);
+    if (position == 1) {
+      let charMove = word.charAt(0);
+      let newStr = word.slice(1);
+      return newStr + charMove + "ay";
+    }
+    if (position == 2) {
+      let charMove = (word.charAt(0)) + (word.charAt(1));
+      let newStr = word.slice(2);
+      return newStr + charMove + "ay";
+    }
+    if (position == 3) {
+      let charMove = (word.charAt(0)) + (word.charAt(1)) + (word.charAt(2));
+      let newStr = word.slice(3);
+      return newStr + charMove + "ay";
+    }
+    if (position == 4) {
+      let charMove = (word.charAt(0)) + (word.charAt(1)) + (word.charAt(2)) + (word.charAt(3));
+      let newStr = word.slice(4);
+      return newStr + charMove + "ay";
+    }
+  }
+}
+
+
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
 // to close it ctrl + C
 const getPrompt = () => {
   rl.question('word ', (answer) => {
-    console.log( pigLatin(answer) );
+    console.log(pigLatin(answer));
     getPrompt();
   });
 }
