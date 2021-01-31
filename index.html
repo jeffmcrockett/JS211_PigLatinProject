@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeff's Pig Latin</title>
+</head>
+<body>
+    <header>
+        <h1>Jeff's Pig Latin Translator</h1>
+    </header>
+    <div>
+        <input id='input' placeholder="Type your word here">
+        <button id='translateNow' onclick='translateNewWord()'>Translate</button>
+    </div>
+    <br><br>
+    <div>
+        The translation is <span id='translatedWord'></span>
+    </div>
     <script src="main.js"></script>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <hr/>
-    <div id="display-element"></div>
-    <button onclick="displayDate()">Click Me</button>
-    <hr/>
-  </body>
+</body>
 </html>

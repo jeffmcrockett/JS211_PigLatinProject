@@ -10,20 +10,17 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
-
-
 let smallestNonNegative = function(num1, num2) {
   if (num1 < 0) {
-    return num2;
+      return num2;
   }
   if (num2 < 0) {
-    return num1;
+      return num1;
   }
   if (num1 < num2) {
-    return num1;
-  } else {
-    return num2;
+      return num1;
+  }   else {
+      return num2;
   }
 }
 
@@ -40,43 +37,59 @@ let indexOfFirstVowel = function(word) {
   for (let x = 0; x < vowelArray.length; x++) {
     vowel = smallestNonNegative(vowel, vowelArray[x])
   }
+  // return the index position of the first vowel
   return vowel;
 }
 
 const pigLatin = function(word) {
-  word = word.trim().toLowerCase();
-
+  // add yay to the end of a word that starts with a vowel
   if (indexOfFirstVowel(word) == 0) {
-    return word + "yay";
+      return word+"yay";
   }
+  // add ay to the end of the word that has no vowels
   if (indexOfFirstVowel(word) == -1) {
-    return word + "ay";
+      return (word+"ay");
   }
+  // remove the consonants before the first vowel
+  // of a word that does not start with a vowel and add
+  // those consonants to the end of the word + ay
   if (indexOfFirstVowel(word) > 0) {
     let position = indexOfFirstVowel(word);
+    // word with one consonant before the first vowel
     if (position == 1) {
-      let charMove = word.charAt(0);
-      let newStr = word.slice(1);
-      return newStr + charMove + "ay";
+        let charMove = word.charAt(0);
+        let newStr = word.slice(1);
+        return newStr+charMove+"ay";
     }
+    // word with two consonants before the first vowel
     if (position == 2) {
-      let charMove = (word.charAt(0)) + (word.charAt(1));
-      let newStr = word.slice(2);
-      return newStr + charMove + "ay";
+        let charMove = (word.charAt(0))+(word.charAt(1));
+        let newStr = word.slice(2);
+        return newStr+charMove+"ay";
     }
+    // word with three consonants before the first vowel
     if (position == 3) {
-      let charMove = (word.charAt(0)) + (word.charAt(1)) + (word.charAt(2));
-      let newStr = word.slice(3);
-      return newStr + charMove + "ay";
+        let charMove = (word.charAt(0))+(word.charAt(1))+(word.charAt(2));
+        let newStr = word.slice(3);
+        return newStr+charMove+"ay";
     }
+    // word with four consonants before the first vowel
     if (position == 4) {
-      let charMove = (word.charAt(0)) + (word.charAt(1)) + (word.charAt(2)) + (word.charAt(3));
-      let newStr = word.slice(4);
-      return newStr + charMove + "ay";
+        let charMove = (word.charAt(0))+(word.charAt(1))+(word.charAt(2))+(word.charAt(3));
+        let newStr = word.slice(4);
+        return newStr+charMove+"ay";
     }
   }
 }
 
+// function onclick to run the translation functions
+let translateNewWord = function() {
+  let inputBox = document.getElementById('input');
+  let input = inputBox.value;
+  let theAnswer = pigLatin(input);
+  let span = document.getElementById('translatedWord');
+  span.innerHTML = theAnswer;
+}
 
 
 // the first function called in the program to get an input from the user
@@ -118,6 +131,9 @@ if (typeof describe === 'function') {
 
 }
 
+let brian = pigLatin("trousers");
+  console.log(brian);
+
 
 
 
@@ -131,3 +147,6 @@ if (typeof describe === 'function') {
 // 1. if word begins with a vowel send to one function: adds "yay"
 // 2. if word begins in with a consonant send to another function: splices off beginning, returns word with new ending.
 // 3. if multiple words, create array of words, loop over them, sending them to different functions and creating a new array with the new words.
+
+
+
