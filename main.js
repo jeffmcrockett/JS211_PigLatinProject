@@ -1,14 +1,4 @@
-'use strict';
-
-// brings in the assert module for unit testing
-const assert = require('assert');
-// brings in the readline module to access the command line
-const readline = require('readline');
-// use the readline module to print out to the command line
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+'use strict'
 
 let smallestNonNegative = function(num1, num2) {
   if (num1 < 0) {
@@ -83,56 +73,21 @@ const pigLatin = function(word) {
 }
 
 // function onclick to run the translation functions
-let translateNewWord = function() {
-  let inputBox = document.getElementById('input');
+let translate = function () {
+  let inputBox = document.getElementById('input'); 
   let input = inputBox.value;
-  let theAnswer = pigLatin(input);
-  let span = document.getElementById('translatedWord');
-  span.innerHTML = theAnswer;
+  let newWord = (pigLatin(input))
+  let output = document.createElement('div');
+  let text = document.createTextNode(newWord);
+  document.body.appendChild(output);
+  output.appendChild(text);
 }
 
 
-// the first function called in the program to get an input from the user
-// to run the function use the command: node main.js
-// to close it ctrl + C
-const getPrompt = () => {
-  rl.question('word ', (answer) => {
-    console.log(pigLatin(answer));
-    getPrompt();
-  });
-}
+let button2 = document.getElementById("translateNow");
+button2.addEventListener('click', translate);
 
-// Unit Tests
-// You use them run the command: npm test main.js
-// to close them ctrl + C
-if (typeof describe === 'function') {
 
-  describe('#pigLatin()', () => {
-    it('should translate a simple word', () => {
-      assert.equal(pigLatin('car'), 'arcay');
-      assert.equal(pigLatin('dog'), 'ogday');
-    });
-    it('should translate a complex word', () => {
-      assert.equal(pigLatin('create'), 'eatecray');
-      assert.equal(pigLatin('valley'), 'alleyvay');
-    });
-    it('should attach "yay" if word begins with vowel', () => {
-      assert.equal(pigLatin('egg'), 'eggyay');
-      assert.equal(pigLatin('emission'), 'emissionyay');
-    });
-    it('should lowercase and trim word before translation', () => {
-      assert.equal(pigLatin('HeLlO '), 'ellohay');
-      assert.equal(pigLatin(' RoCkEt'), 'ocketray');
-    });
-  });
-} else {
-
-  getPrompt();
-
-}
-
-let brian = pigLatin("trousers");
-  console.log(brian);
 
 
 
